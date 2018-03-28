@@ -25,6 +25,24 @@
                             </div>
                         </div>
 
+                        <!-MODIFICANDO ->
+                        <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
+                            <label for="lastname" class="col-md-4 control-label">Lastname</label>
+
+                            <div class="col-md-6">
+                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required autofocus>
+
+                                @if ($errors->has('lastname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lastname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <!-FIN MODIFICANDO  ->
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -61,10 +79,17 @@
                             </div>
                         </div>
 
+
+                        <!- MODIFICANDO LA VISTA PARA ESCOGER EL ROL->
+
+                        
+
+                        <!- FIN DE MODIFICANDO LA VISTA PARA ESCOGER EL ROL->
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Register User
                                 </button>
                             </div>
                         </div>
