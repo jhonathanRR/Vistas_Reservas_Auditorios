@@ -82,7 +82,17 @@
 
                         <!- MODIFICANDO LA VISTA PARA ESCOGER EL ROL->
 
-                        
+                        <div class="form-group">
+                            <label for="rol" class="col-md-4 control-label">Rol</label>
+
+                            <div class="col-md-6">
+                                    <select name="rol">
+                                            <option value="admin">Admin</option>
+                                            <option value="turn">Turn</option>
+                                          </select>
+                            </div>
+                        </div>
+
 
                         <!- FIN DE MODIFICANDO LA VISTA PARA ESCOGER EL ROL->
 
