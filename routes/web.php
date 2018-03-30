@@ -29,7 +29,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     // Las rutas que incluyas aquí pasarán por el middleware 'auth'
     //////// RUTAS DEL SUPER ADMIN
-    Route::resource('/crudUser', 'SuperAdminController');
+    //Route::resource('/crudUser', 'SuperAdminController');
     // Ruta la cual la utilizaremos para solicitar el ingreso del super admin Verb=get
     Route::get('/home', 'HomeController@index')->name('home');
     // Ruta para solicitar el formulario de crear del administrador Verb=Post
@@ -39,9 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     // ruta para entrar a la gestion de los usuarios
     Route::get('/gestion_usuarios', 'SuperAdminController@createGestionUsuarios')->name('gestionuser');
 
-    // Ruta para editar el usuario Verb=Post
-    Route::get('/editarUsuario', 'SuperAdminController@edit');
-
+    
 
     /////RUTAS DEL AUDITORIO
     // crud del auditorio
@@ -62,6 +60,19 @@ Route::group(['middleware' => 'auth'], function () {
     // Ruta para editar el auditorio Verb=Post
     Route::get('/editarReserva', 'ReservaController@edit');
 
+
+    //RUTAS PARA EL CONTROLADOR USERCONTROLLER
+
+    Route::get('/crudUser','UserController@index');
+
+    Route::get('sites/{site}/edit','UserController@edit')->name('editar');
+
+    //Route::resource('/crudUser', 'UserController');
+
+    // Ruta para editar el usuario Verb=Post
+    Route::get('/crear','UserController@create')->name('crear');
+    //para cerrar la sesion del auth
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 });
 
