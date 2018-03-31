@@ -43,12 +43,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     /////RUTAS DEL AUDITORIO
     // crud del auditorio
-    Route::resource('/crudAuditorium', 'AuditorioController');
+    Route::resource('auditorios', 'AuditorioController');
     //crear el auditorio
     Route::get('/crearAuditorio', 'AuditorioController@create');
 
     // Ruta para editar el auditorio Verb=Post
     Route::get('/editarAuditorio', 'AuditorioController@edit');
+    Route::get('/delete/{auditorio}', 'AuditorioController@destroy')->name('eliminar');
 
 
     //////RUTAS PARA LAS RESERVAS 
@@ -65,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/crudUser','UserController@index');
 
-    Route::get('sites/{site}/edit','UserController@edit')->name('editar');
+    Route::get('users/{user}/edit','UserController@edit')->name('editar');
 
     //Route::resource('/crudUser', 'UserController');
 
@@ -73,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/crear','UserController@create')->name('crear');
     //para cerrar la sesion del auth
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+    Route::get('/delete/{user}', 'UserController@destroy')->name('eliminar2');
 
 });
 

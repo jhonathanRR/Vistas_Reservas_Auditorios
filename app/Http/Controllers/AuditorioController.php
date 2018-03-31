@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-
+use App\Auditorio;
+use Auth;
+use Session;
 class AuditorioController extends Controller
 {
     /**
@@ -13,8 +15,13 @@ class AuditorioController extends Controller
      */
     public function index()
     {
+        $auditorios = Auditorio::all();
+        //me devuelve todos los 4 primeros usuarios
+        $auditorios=Auditorio::paginate(4);
+
+        
         // retorna el crud del auditorio
-        return view('/layouts.super_admin.crudAuditorio');
+        return view('/layouts.super_admin.crudAuditorio',compact('auditorios'));
     }
 
     /**
@@ -26,11 +33,11 @@ class AuditorioController extends Controller
     {
         //
 
-        return view('layouts.super_admin.crearAuditorio');
+        return view('/layouts.super_admin.crearAuditorio');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * //request es la informacion que nos es lanzada, parte importante para almacenar en nuestra aplicacion.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -38,6 +45,14 @@ class AuditorioController extends Controller
     public function store(Request $request)
     {
         //
+        $auditorio = new Auditorio($request->all());
+		$auditorio->user_id = Auth::user()->id;
+		$auditorio->save();
+
+        
+		//return "Auditorio de la uam registrado";
+		return redirect('auditorios')->with('message','Auditorio Guardado exitosamente');
+
     }
 
     /**
@@ -58,10 +73,12 @@ class AuditorioController extends Controller
      * @return \Illuminate\Http\Response
      */
     // le falta el $id
-    public function edit()
+    public function edit($id)
     {
         //
-        return view('layouts.super_admin.editarAuditorio');
+        $auditorio = Auditorio::find($id);
+		return view('layouts.super_admin.editarAuditorio',['auditorio'=>$auditorio]);
+
     }
 
     /**
@@ -74,6 +91,12 @@ class AuditorioController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $auditorio = Auditorio::find($id);
+		$auditorio->fill($request->all());
+		$auditorio->save();
+
+		Session::flash('message','Auditorio editado Correctamente');
+		return Redirect::to('auditorios');
     }
 
     /**
@@ -84,6 +107,8 @@ class AuditorioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Auditorio::destroy($id);
+		Session::flash('message','Auditorio eliminado de manera correcta');
+		return Redirect::to('auditorios');
     }
 }

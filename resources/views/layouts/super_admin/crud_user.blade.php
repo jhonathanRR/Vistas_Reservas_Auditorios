@@ -20,9 +20,9 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Email</th>
-                                <th>Rol</th>
+                                <th>Email</th>                                
                                 <th>Fecha de Creacion</th>
+                                <th>Rol</th>
                                 <th>Opciones</th>
                             </thead>
                             <!--// mostrar el total de registros que tengo en mi tabla sitios -->
@@ -34,9 +34,6 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td>{{$user->rol}}</td>
-                                <td>{//!!link_to_route('editar', $title = 'Editar', $parameters = $user->id, $attributes = ['class'=>'btn btn-primary'])!!}
-                                </td>
-                                <td>{//!!link_to_route('eliminar', $title = 'Eliminar', $parameters = $user->id, $attributes = ['class'=>'btn btn-danger'])!!}</td>                       
                             </tbody>
                             @endforeach
                         </table>                        

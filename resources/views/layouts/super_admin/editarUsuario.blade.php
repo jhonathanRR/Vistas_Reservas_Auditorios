@@ -1,98 +1,42 @@
-@extends('layouts.app')
+@extends('layouts.app');
+@section('content');
 
-@section('content')
+	<!--// Lo que vamos hacer es enrutar para que guarde un sitio esto lo hacemos pasandolo po -->
+	{!!Form::model($user,['route'=>['user.update',$user->id],'method'=>'PUT'])!!}
+	<div class="form-group">
+		{!!Form::label('Nombre:')!!}
+		{!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Ingrese el nombre del auditorio'])!!}
+	</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><b>Editar Usuario</b> </div>
+	<div class="form-group">
+		{!!Form::label('Latitud:')!!}
+		{!!Form::text('latitude',null,['class'=>'form-control','placeholder'=>'Ingrese la latitud del auditorio'])!!}
+	</div>
 
-                <div class="panel-body" >
-                    
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+	<div class="form-group">
+		{!!Form::label('Longitud:')!!}
+		{!!Form::text('longitude',null,['class'=>'form-control','placeholder'=>'Ingrese la longitud del auditorio'])!!}
+	</div>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                                <label for="cedula" class="col-md-4 control-label">cedula</label>
+	<div class="form-group">
+		{!!Form::label('Descripcion:')!!}
+		{!!Form::textArea('description',null,['class'=>'form-control','placeholder'=>'Ingrese la descripcion del auditorio'])!!}
+    </div>
     
-                                <div class="col-md-6">
-                                    <input id="cedula" type="password" class="form-control" name="cedula" required>
-                                </div>
-                            </div>
+    <div class="form-group">
+        <label for="rol" class="col-md-4 control-label">rol</label>
 
-                            <div class="form-group">
-                                    <label for="rol" class="col-md-4 control-label">rol</label>
-        
-                                    <div class="col-md-6">
-                                            <select>
-                                                    <option value="volvo">Usuario de turnos</option>
-                                                    <option value="saab">Usuario Admin</option>
-                                                  </select>
-                                    </div>
-                                </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="col-md-6">
+                <select>
+                        <option value="volvo">Usuario de turnos</option>
+                        <option value="saab">Usuario Admin</option>
+                      </select>
         </div>
     </div>
-</div>
-@endsection
+
+	{!!Form::submit('Registrar',['class'=>'btn btn-primary'])!!},
+
+	{!!Form::close()!!}	
+
+@stop
+

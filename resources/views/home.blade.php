@@ -18,7 +18,7 @@
         <ul>
                <!--//con esto le pasamos a el controlador index que nos muestre la vista del home de usuarios -->
         <li><a class="active" href="{{action('UserController@index')}}">Administrar Usuarios</a></li>
-        <li><a href="{{action('AuditorioController@index')}}">Administrar Auditoríos</a></li>
+        <li><a href="{{route('auditorios.index')}}">Administrar Auditoríos</a></li>
         <li><a href="{{action('ReservaController@index')}}">Administrar reservas</a></li>
         <li><a href="{{action('AcercaDeController@index')}}">Acerca de </a></li>
        </ul>

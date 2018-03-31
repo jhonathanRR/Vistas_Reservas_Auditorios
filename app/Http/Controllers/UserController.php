@@ -80,6 +80,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+		$user->fill($request->all());
+		$user->save();
+
+		Session::flash('message','Usuario editado Correctamente');
+		return Redirect::to('layouts.super_admin.crudUsuario');
     }
 
     /**
@@ -92,8 +98,8 @@ class UserController extends Controller
     {
         //
         User::destroy($id);
-		Session::flash('message','Sitio eliminado de manera correcta');
-		return Redirect::to('home');
+		Session::flash('message','Usuario eliminado de manera correcta');
+		return Redirect::to('crudUser');
 
     }
 }
