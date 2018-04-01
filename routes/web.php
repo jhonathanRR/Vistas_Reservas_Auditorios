@@ -63,5 +63,36 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/editarReserva', 'ReservaController@edit');
 
 
+    //RUTAS PARA EL CONTROLADOR USERCONTROLLER
+
+    Route::get('/crudUser','UserController@index')->name('crudUser.index');
+    Route::get('/editarUsuario/{crudUser}/edit','UserController@edit')->name('crudUser.edit');
+    // Ruta para editar el usuario Verb=Post
+    Route::get('/verUsuario/{crudUser}', 'UserController@show')->name('crudUser.show');
+
+    Route::put('/update/{user}', 'UserController@update')->name('crudUser.update');
+
+    //Route::get('users/{user}/edit','UserController@edit')->name('editar');
+
+    //Route::resource('/crudUser', 'UserController');
+
+    // Ruta para editar el usuario Verb=Post
+    Route::get('/crear','UserController@create')->name('crear');
+    //para cerrar la sesion del auth
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+    Route::delete('/delete/{user}', 'UserController@destroy')->name('eliminar2');
+
+     /////RUTAS DEL EVENTO
+    // crud del evento
+    Route::resource('/crudEvento', 'EventoController');
+    //crear el evento
+    Route::get('/crearEvento', 'EventoController@create');
+
+    // Ruta para editar el evento Verb=Post
+    Route::get('/editarEvento', 'EventoController@edit');
+    // Ruta para editar el evento Verb=Post
+    Route::get('/verEvento', 'EventoController@show');
+
 });
 

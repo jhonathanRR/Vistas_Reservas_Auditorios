@@ -11,22 +11,55 @@
 @endif
 
 @section('content')
-                <!--// Creamos un usuario y cuando demos click en el boton nos aparecera un nuevo usuario -->  
-                    <h3>Listado de los usuarios creados<a href="gestion_usuarios">
-                        <br/><button>Nuevo</button></a>
-                    </h3>
+<div class="container">
+        <div class="row">
+          <div class="col">
+            
+          </div>
+          <div class="col-14">
+          <!--// Creamos un titulo y cuando demos click en el boton nos aparecera un nuevo sitio -->  
+            <h3>Listado de Los usuarios<a href="crear">
+                <br/><button class="btn btn-default">Nuevo</button></a>
+                </h3>
 
-                    <pre>
-            <b>Id               Nombre            Email              rol          fecha creacion      fecha modificacion       Editar          Eliminar</b>           
-            1              Jhonathan       jnatan162@gmail.com   user_admin     20-02-2018            25-02-2018         <a href="editarUsuario"><button type="button" class="btn btn-primary">Editar</button></a>       <button type="button" class="btn btn-danger">Eliminar</button>      
-                       
-                        </pre>
-
-                            <tbody>
-                                
-                        </table>                        
-                    </div>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>                                
+                            <th>Fecha de Creación</th>
+                            <th>Rol</th>
+                            <th>Editar</th>      
+                            <th>Ver</th>    
+                            <th>Eliminar</th>    
+                        </thead>
+                        <!--// mostrar el total de registros que tengo en mi tabla sitios -->
+                        @foreach($users as $user)
+                        <tbody>
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->lastname}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->created_at}}</td>
+                            <td>{{$user->rol}}</td>
+                            <td><a href="{{ route('crudUser.edit', $user->id) }}" class="btn btn-primary">Editar</a></td>      
+                            <td><a href="{{ route('crudUser.show', $user->id) }}" class="btn btn-outline-primary">Ver</a></td>                      
+                            <td>
+                                <form action="{{ route('eliminar2', $user->id) }}" method="post">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-outline-danger" type="submit">Eliminar</button>
+                                </form>
+                            </td>
+                        </tbody>
+                        @endforeach
+                    </table>                                            
+                    {{$users->render()}}
+                </div>          
+          <div class="col">
+            
+          </div>
         </div>
-    </div>
-</div>
+      </div>                
 @endsection

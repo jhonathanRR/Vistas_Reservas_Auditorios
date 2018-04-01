@@ -13,6 +13,11 @@ class AuditorioController extends Controller
      */
     public function index()
     {
+        $auditorios = Auditorio::all();
+        //me devuelve todos los 4 primeros usuarios
+        $auditorios=Auditorio::paginate(2);
+
+        
         // retorna el crud del auditorio
         return view('/layouts.super_admin.crudAuditorio');
     }

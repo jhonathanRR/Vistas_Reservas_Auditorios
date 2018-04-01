@@ -8,7 +8,12 @@
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
+<<<<<<< HEAD
         "laravel/tinker": "~1.0"
+=======
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "~5.0"
+>>>>>>> 508f09a... Se crea el crud de eventos funcional, se cambia diseño y se completa el crud de usuarios
     },
     "require-dev": {
         "filp/whoops": "~2.0",

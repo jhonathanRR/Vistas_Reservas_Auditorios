@@ -1,37 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.app');
+@section('content');
 
-@section('content')
-
+	<!-- Equal width cols, same on all screen sizes -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><b>Editar Usuario</b> </div>
-
-                <div class="panel-body" >
-                    
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+        <div class="row">
+          <div class="col">
+            
+          </div>
+          <div class="col">
+          <h1>Editar usuario</h1>
+            <p class="lead">Ingrese los datos para modificar el usuario.
+            <a href="{{ route('crudUser.index') }}">Regresar y ver todos los usuarios</a></p>
+            <hr>
+            @if($errors->any())
+            <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
+            </div>
+            @endif
+            {!! Form::model($data, [
+            'method' => 'PUT',
+            'route' => ['crudUser.update', $data->id]
+            ]) !!}
+            <div class="form-group">
+            {!! Form::label('name', 'Nombre', ['class' => 'control-label']) !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('lastname', 'Apellidos', ['class' => 'control-label']) !!}
+            {!! Form::text('lastname', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('email', 'Correo', ['class' => 'control-label']) !!}
+            {!! Form::email('email', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('rol', 'Rol', ['class' => 'control-label']) !!}
+            {!! Form::select('rol', array('admin' => 'Admin','turn' => 'Turnos'),null, ['class' => 'form-control']) !!}
+            </div>
+            {!! Form::submit('Actualizar usuario', ['class' => 'btn btn-primary']) !!}
+            {!! Form::close() !!}
+                
+            </div>                    
+          <div class="col">
+            
+          </div>
+        </div>
+      </div>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
