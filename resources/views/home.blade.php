@@ -23,6 +23,8 @@
         <li><a href="{{action('AcercaDeController@index')}}">Acerca de </a></li>
        </ul>
                     
+{{ Auth::user()->isAdmin() }}
+
                 </div>
             </div>
         </div>
