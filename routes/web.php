@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Ruta para editar el usuario Verb=Post
     Route::get('/editarUsuario', 'SuperAdminController@edit');
+    //Route::get('/home', 'SuperAdminController@index');
 
 
     /////RUTAS DEL AUDITORIO

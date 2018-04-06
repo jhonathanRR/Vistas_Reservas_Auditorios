@@ -26,4 +26,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * preguntamos si es un administrador
+     */
+    public function isAdmin()
+    {
+        return $this->attributes['rol'] == 'admin';
+    }
+    /*
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    } 
+    */
 }
