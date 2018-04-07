@@ -16,11 +16,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        // me valida si soy un usuario administrador
+
+        if(Auth::user()->isAdmin()==true){
+            $users = User::all();
         //me devuelve todos los 4 primeros usuarios
         $users=User::paginate(4);
         //para enviarle la informacion a la tabla 
-        return view('layouts.super_admin.crud_user',compact('users'));		
+        return view('layouts.super_admin.crud_user',compact('users'));		            
+        }else{
+            return view('mensajeDeError');
+
+        }
     }
 
     /**
@@ -54,7 +61,14 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        //        
+        try{
+            $event = User::findOrFail($id);
+            return view('layouts.super_admin.verUsuario', ['data' => $event]);
+        }catch(ModelNotFoundException $e){
+            Session::flash();
+            return redirect('crudUser')->with('message','El usuario ($id) no puede ser consultado !');                        
+        }
     }
 
     /**
@@ -68,6 +82,7 @@ class UserController extends Controller
         // 
         $user = User::find($id);
         return view('layouts.super_admin.editarUsuario',['user'=>$user]);
+        
     }
 
     /**
@@ -79,13 +94,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $user = User::find($id);
-		$user->fill($request->all());
-		$user->save();
-
-		Session::flash('message','Usuario editado Correctamente');
-		return Redirect::to('layouts.super_admin.crudUsuario');
+        try{
+            $user = User::findOrFail($id);
+            $input = $request->all();
+            $user->fill($input)->save();
+            Session::flash('message','Usuario editado Correctamente');
+            return redirect('crudUser')->with('message','Usuario editado correctamente!');            
+        }catch(ModelNotFoundException $e){            
+        }        
     }
 
     /**

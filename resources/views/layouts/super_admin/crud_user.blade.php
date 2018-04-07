@@ -20,8 +20,7 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Email</th>                                
-                                <th>Fecha de Creacion</th>
+                                <th>Email</th>
                                 <th>Rol</th>
                                 <th>Opciones</th>
                             </thead>
@@ -32,8 +31,16 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->lastname}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->created_at}}</td>
                                 <td>{{$user->rol}}</td>
+                                <td><a href="{{ route('crudUser.edit', $user->id) }}" class="btn btn-primary">Editar</a></td>
+                                <td><a href="{{ route('crudUser.show', $user->id) }}" class="btn btn-outline-primary">Ver</a></td>
+                                <td>
+                                    <form action="{{ route('eliminar2', $user->id) }}" method="post">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-outline-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </td>
                             </tbody>
                             @endforeach
                         </table>                        

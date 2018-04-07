@@ -77,5 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/delete/{user}', 'UserController@destroy')->name('eliminar2');
 
+    Route::resource('crudUser','UserController');
+    Route::delete('/delete/{user}', 'UserController@destroy')->name('eliminar2');
+
 });
 
