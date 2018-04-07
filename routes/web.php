@@ -80,5 +80,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('crudUser','UserController');
     Route::delete('/delete/{user}', 'UserController@destroy')->name('eliminar2');
 
+    /////RUTAS DEL EVENTO
+    // crud del evento
+    Route::resource('/crudEvento', 'EventoController');
+    //crear el evento
+    Route::get('/crearEvento', 'EventoController@create');
+
+    // Ruta para editar el evento Verb=Post
+    Route::get('/editarEvento', 'EventoController@edit');
+    // Ruta para editar el evento Verb=Post
+    Route::get('/verEvento', 'EventoController@show');
+
 });
 

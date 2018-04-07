@@ -15,6 +15,7 @@ class AuditorioController extends Controller
      */
     public function index()
     {
+        
         $auditorios = Auditorio::all();
         //me devuelve todos los 4 primeros usuarios
         $auditorios=Auditorio::paginate(4);
@@ -32,8 +33,16 @@ class AuditorioController extends Controller
     public function create()
     {
         //
+        // me valida si soy un usuario administrador
 
-        return view('/layouts.super_admin.crearAuditorio');
+        if(Auth::user()->isAdmin()==true){
+            return view('/layouts.super_admin.crearAuditorio');
+          		            
+        }else{
+            return view('mensajeDeError');
+        }
+
+        
     }
 
     /**
@@ -76,8 +85,14 @@ class AuditorioController extends Controller
     public function edit($id)
     {
         //
-        $auditorio = Auditorio::find($id);
-		return view('layouts.super_admin.editarAuditorio',['auditorio'=>$auditorio]);
+        if(Auth::user()->isAdmin()==true){
+            $auditorio = Auditorio::find($id);
+		return view('layouts.super_admin.editarAuditorio',['auditorio'=>$auditorio]);         
+          		            
+        }else{
+            return view('mensajeDeError');
+        }
+        
 
     }
 
@@ -91,12 +106,20 @@ class AuditorioController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if(Auth::user()->isAdmin()==true){
+
         $auditorio = Auditorio::find($id);
 		$auditorio->fill($request->all());
 		$auditorio->save();
 
 		Session::flash('message','Auditorio editado Correctamente');
-		return Redirect::to('auditorios');
+        return Redirect::to('auditorios');
+        
+          		            
+        }else{
+            return view('mensajeDeError');
+        }
+        
     }
 
     /**
@@ -107,8 +130,16 @@ class AuditorioController extends Controller
      */
     public function destroy($id)
     {
-        Auditorio::destroy($id);
-		Session::flash('message','Auditorio eliminado de manera correcta');
-		return Redirect::to('auditorios');
+        //
+        if(Auth::user()->isAdmin()==true){
+            Auditorio::destroy($id);
+            Session::flash('message','Auditorio eliminado de manera correcta');
+            return Redirect::to('auditorios');
+          		            
+        }else{
+            return view('mensajeDeError');
+        }
+        
+        
     }
 }

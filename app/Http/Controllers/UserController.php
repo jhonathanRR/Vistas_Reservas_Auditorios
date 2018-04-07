@@ -80,8 +80,14 @@ class UserController extends Controller
     public function edit($id)
     {
         // 
-        $user = User::find($id);
-        return view('layouts.super_admin.editarUsuario',['user'=>$user]);
+        if(Auth::user()->isAdmin()==true){
+            $user = User::find($id);
+            return view('layouts.super_admin.editarUsuario',['user'=>$user]);
+        }else{
+            return view('mensajeDeError');
+
+        }
+        
         
     }
 
@@ -94,6 +100,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         try{
             $user = User::findOrFail($id);
             $input = $request->all();
@@ -113,9 +120,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
-		Session::flash('message','Usuario eliminado de manera correcta');
-		return Redirect::to('crudUser');
+        if(Auth::user()->isAdmin()==true){
+            User::destroy($id);
+            Session::flash('message','Usuario eliminado de manera correcta');
+            return Redirect::to('crudUser');
+    
+        }else{
+            return view('mensajeDeError');
 
+        }
+        
+        
     }
 }
