@@ -42,7 +42,7 @@
             </div>
             <div class="form-group">
             {!! Form::label('description', 'Descripción', ['class' => 'control-label']) !!}
-            {!! Form::text('description', null, ['class' => 'form-control']) !!}
+            {!! Form::textArea('description', null, ['class' => 'form-control']) !!}
             </div>
             {!! Form::submit('Actualizar evento', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}

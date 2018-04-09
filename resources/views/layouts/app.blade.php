@@ -17,7 +17,7 @@
 </head>
 <body >
     <div id="app">
-    <nav class="navbar navbar-light" style="background-color: #C0C0C0;">
+    <nav class="navbar navbar-dark" style="background-color: #272326;">
             <div class="container">
             <div class="row">
                 <div class="col">

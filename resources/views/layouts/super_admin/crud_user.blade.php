@@ -17,9 +17,13 @@
             
           </div>
           <div class="col-14">
+          <br>
+          <br>
+          <br>
           <!--// Creamos un titulo y cuando demos click en el boton nos aparecera un nuevo sitio -->  
             <h3>Listado de Los usuarios<a href="crear">
-                <br/><button class="btn btn-default">Nuevo</button></a>
+                <br/><button class="btn btn-outline-dark">Nuevo</button></a>
+                <a href="home"><button class="btn btn-outline-dark">Atrás</button></a>
                 </h3>
 
                     <table class="table">

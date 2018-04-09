@@ -46,12 +46,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     /////RUTAS DEL AUDITORIO
     // crud del auditorio
-    Route::resource('/crudAuditorium', 'AuditorioController');
+    Route::resource('auditorios', 'AuditorioController');
+    Route::get('/crudAuditorio', 'AuditorioController@index')->name('crudAuditorio.index');
     //crear el auditorio
     Route::get('/crearAuditorio', 'AuditorioController@create');
 
     // Ruta para editar el auditorio Verb=Post
     Route::get('/editarAuditorio', 'AuditorioController@edit');
+    Route::get('/delete/{auditorio}', 'AuditorioController@destroy')->name('eliminar');
 
 
     //////RUTAS PARA LAS RESERVAS 

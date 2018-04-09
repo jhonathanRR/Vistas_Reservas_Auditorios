@@ -16,9 +16,13 @@
             
           </div>
           <div class="col-13">
+          <br>
+          <br>
+          <br>
           <h3>Listado de  Eventos<a href="crearEvento">
           </br>
-              <br/><button class="btn btn-default">Nuevo</button></a>
+              <br/><button class="btn btn-outline-dark">Nuevo</button></a>
+              <a href="home"><button class="btn btn-outline-dark">Atrás</button></a>
           </h3>
           <table class="table">
             <thead class="thead-dark">
