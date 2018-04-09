@@ -15,12 +15,20 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $users = User::all();
+    {        
+        
+        // me valida si soy un usuario administrador
+
+        if(Auth::user()->isAdmin()==true){
+            $users = User::all();
         //me devuelve todos los 4 primeros usuarios
         $users=User::paginate(4);
         //para enviarle la informacion a la tabla 
-        return view('layouts.super_admin.crud_user',compact('users'));		
+        return view('layouts.super_admin.crud_user',compact('users'));		            
+        }else{
+            return view('mensajeDeError');
+
+        }
     }
 
     /**
@@ -103,11 +111,17 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {                
         //
-        User::destroy($id);
-		Session::flash('message','Usuario eliminado de manera correcta');
-		return Redirect::to('crudUser');
+        if(Auth::user()->isAdmin()==true){
+            User::destroy($id);
+            Session::flash('message','Usuario eliminado de manera correcta');
+            return Redirect::to('crudUser');
+    
+        }else{
+            return view('mensajeDeError');
+
+        }
 
     }
 }

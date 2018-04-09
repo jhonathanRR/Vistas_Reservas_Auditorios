@@ -42,7 +42,8 @@
                             <!-- Authentication Links -->
                             @guest
                                 <li><a class="navbar-brand" href="{{ route('login') }}">Login</a>
-                                <a class="navbar-brand" href="{{ route('register') }}">Register</a></li>                                
+                                <!--ESCONDEMOS EL REGISTRO DESDE EL LOGIN
+                                <li><a href="{{ route('register') }}">Register</a></li>-->
                             @else
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true" aria-haspopup="false">
