@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -19,5 +20,18 @@ class Event extends Model
     public function owner()
     {
     return $this->belongsTo('App\Auditorio');
+    }
+
+    public function validaFechaFinAtributtes ()
+    {
+        //utilizando carbon
+        /**
+         * 
+         * if (Carbon::parse($this->attributes['dateEnd'])->diffInMinutes() > Carbon::parse($this->attributes['dateInit'])->diffInMinutes()) {
+         *   echo("error 404");
+         *  }
+         */
+                
+
     }
 }

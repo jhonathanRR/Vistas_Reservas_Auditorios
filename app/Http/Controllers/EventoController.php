@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Auditorio;
 use Session;
+use \Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class EventoController extends Controller
 {
+
+    public function __construct()
+    {
+        Carbon::setLocale('es');
+    }
     /**
      * Display a listing of the resource.
      *

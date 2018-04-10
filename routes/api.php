@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::resource('events', 'Api\EventoApiController')->only([
+    'index', 'show','create','edit','update','destroy','store',
+]);
