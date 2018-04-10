@@ -15,7 +15,6 @@ class AuditorioController extends Controller
      */
     public function index()
     {
-        
         $auditorios = Auditorio::all();
         //me devuelve todos los 4 primeros usuarios
         $auditorios=Auditorio::paginate(4);
@@ -41,7 +40,6 @@ class AuditorioController extends Controller
         }else{
             return view('mensajeDeError');
         }
-
         
     }
 
@@ -91,8 +89,7 @@ class AuditorioController extends Controller
           		            
         }else{
             return view('mensajeDeError');
-        }
-        
+        }        
 
     }
 
@@ -108,18 +105,16 @@ class AuditorioController extends Controller
         //
         if(Auth::user()->isAdmin()==true){
 
-        $auditorio = Auditorio::find($id);
-		$auditorio->fill($request->all());
-		$auditorio->save();
+            $auditorio = Auditorio::find($id);
+            $auditorio->fill($request->all());
+            $auditorio->save();
 
-		Session::flash('message','Auditorio editado Correctamente');
-        return Redirect::to('auditorios');
-        
-          		            
+            Session::flash('message','Auditorio editado Correctamente');
+            return Redirect::to('auditorios');
+
         }else{
             return view('mensajeDeError');
         }
-        
     }
 
     /**
@@ -129,7 +124,7 @@ class AuditorioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {       
         //
         if(Auth::user()->isAdmin()==true){
             Auditorio::destroy($id);
@@ -139,7 +134,5 @@ class AuditorioController extends Controller
         }else{
             return view('mensajeDeError');
         }
-        
-        
     }
 }

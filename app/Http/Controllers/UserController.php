@@ -15,7 +15,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
+        
         // me valida si soy un usuario administrador
 
         if(Auth::user()->isAdmin()==true){
@@ -80,15 +81,8 @@ class UserController extends Controller
     public function edit($id)
     {
         // 
-        if(Auth::user()->isAdmin()==true){
-            $user = User::find($id);
-            return view('layouts.super_admin.editarUsuario',['user'=>$user]);
-        }else{
-            return view('mensajeDeError');
-
-        }
-        
-        
+        $user = User::find($id);
+        return view('layouts.super_admin.editarUsuario',['data'=>$user]);
     }
 
     /**
@@ -100,7 +94,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         try{
             $user = User::findOrFail($id);
             $input = $request->all();
@@ -118,7 +111,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {                
         //
         if(Auth::user()->isAdmin()==true){
             User::destroy($id);
@@ -129,7 +122,6 @@ class UserController extends Controller
             return view('mensajeDeError');
 
         }
-        
-        
+
     }
 }

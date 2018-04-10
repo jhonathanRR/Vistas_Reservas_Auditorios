@@ -29,7 +29,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     // Las rutas que incluyas aquí pasarán por el middleware 'auth'
     //////// RUTAS DEL SUPER ADMIN
-    //Route::resource('/crudUser', 'SuperAdminController');
+    Route::resource('/crudUser', 'SuperAdminController');
     // Ruta la cual la utilizaremos para solicitar el ingreso del super admin Verb=get
     Route::get('/home', 'HomeController@index')->name('home');
     // Ruta para solicitar el formulario de crear del administrador Verb=Post
@@ -39,11 +39,15 @@ Route::group(['middleware' => 'auth'], function () {
     // ruta para entrar a la gestion de los usuarios
     Route::get('/gestion_usuarios', 'SuperAdminController@createGestionUsuarios')->name('gestionuser');
 
-    
+    // Ruta para editar el usuario Verb=Post
+    Route::get('/editarUsuario', 'SuperAdminController@edit');
+    //Route::get('/home', 'SuperAdminController@index');
+
 
     /////RUTAS DEL AUDITORIO
     // crud del auditorio
     Route::resource('auditorios', 'AuditorioController');
+    Route::get('/crudAuditorio', 'AuditorioController@index')->name('crudAuditorio.index');
     //crear el auditorio
     Route::get('/crearAuditorio', 'AuditorioController@create');
 
@@ -64,9 +68,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     //RUTAS PARA EL CONTROLADOR USERCONTROLLER
 
-    Route::get('/crudUser','UserController@index');
+    Route::get('/crudUser','UserController@index')->name('crudUser.index');
+    Route::get('/editarUsuario/{crudUser}/edit','UserController@edit')->name('crudUser.edit');
+    // Ruta para editar el usuario Verb=Post
+    Route::get('/verUsuario/{crudUser}', 'UserController@show')->name('crudUser.show');
 
-    Route::get('users/{user}/edit','UserController@edit')->name('editar');
+    Route::put('/update/{user}', 'UserController@update')->name('crudUser.update');
+
+    //Route::get('users/{user}/edit','UserController@edit')->name('editar');
 
     //Route::resource('/crudUser', 'UserController');
 
@@ -75,12 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
     //para cerrar la sesion del auth
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-    Route::get('/delete/{user}', 'UserController@destroy')->name('eliminar2');
-
-    Route::resource('crudUser','UserController');
     Route::delete('/delete/{user}', 'UserController@destroy')->name('eliminar2');
 
-    /////RUTAS DEL EVENTO
+     /////RUTAS DEL EVENTO
     // crud del evento
     Route::resource('/crudEvento', 'EventoController');
     //crear el evento

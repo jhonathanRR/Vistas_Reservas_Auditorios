@@ -10,6 +10,7 @@
           <div class="col-13">
           <h1>Agregar un nuevo evento</h1>
             <p class="lead">Ingrese la siguiente información para crear un nuevo evento.</p>
+            <a href="{{ route('crudEvento.index') }}">Regresar y ver todos los eventos</a></p>
             <hr>
             {!! Form::open(['route' => 'crudEvento.store']) !!}
             <div class="form-group">

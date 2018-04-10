@@ -35,6 +35,10 @@
             <td>Actualizado</td>
             <td>{{ $data->updated_at }}</td>
             </tr>
+            <tr>
+            <td>Descripción</td>
+            <td>{{ $data->description }}</td>
+            </tr>
             </table>
           </div>
           <div class="col">

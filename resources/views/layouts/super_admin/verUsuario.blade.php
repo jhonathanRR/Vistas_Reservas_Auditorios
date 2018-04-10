@@ -7,18 +7,10 @@
             
           </div>
           <div class="col">
-          <h1 style="background-color: aquamarine">{{ $data->name }}</h1>
-           <p class="lead">{{ $data->password }}</p>
+          <h1>{{ $data->name }}</h1>
+            <p class="lead">{{ $data->lastname }}</p>
             <a href="{{ route('crudUser.index') }}">Regresar y ver todos los usuarios</a></p>
             <table class="table table-striped table-hover">
-            <tr>
-                <td style="width: 200px;">Id</td>
-                <td>{{ $data->id }}</td>
-            </tr>    
-            <tr>
-               <td style="width: 200px;">Apellido(s)</td>
-               <td>{{ $data->lastname }}</td>
-            </tr>
             <tr>
             <td style="width: 200px;">Correo</td>
             <td>{{ $data->email }}</td>

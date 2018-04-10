@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Event;
 use App\Auditorio;
@@ -125,5 +126,4 @@ class EventoController extends Controller
             return redirect()->back();
         }
     }
-    
 }
