@@ -78,8 +78,7 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Ingresar</a>
-                        <!--ESCONDEMOS EL REGISTRARSE
-                        <a href="{{ route('register') }}">Registrarse</a>-->
+                        <a href="{{ route('register') }}">Registrarse</a>
                     @endauth
                 </div>
             @endif
@@ -90,7 +89,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
+                    
                     <a href="/acercaDe">Desarrolladores</a>                    
                 </div>
             </div>
