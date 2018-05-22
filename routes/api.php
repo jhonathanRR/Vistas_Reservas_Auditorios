@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('events', 'Api\EventoApiController')->only([
     'index', 'show','create','edit','update','destroy','store',
 ]);
+
+Route::get('events','Api\EventoApiController@index');

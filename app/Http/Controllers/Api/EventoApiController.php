@@ -16,7 +16,7 @@ class EventoApiController extends Controller
     {
         // Me muestra en la webservices
         $events= Event::all()->toarray(); 
-        return response()->json($events);
+        return response()->json(['eventos'=>$events]);        
     }
 
     /**
@@ -88,7 +88,7 @@ class EventoApiController extends Controller
 
             if(!$event){
                 return response()->json(['este evento que selecciono no existe'],404);                
-            }
+            }   
             $event->delete();
             return response()->json(['Evento borrado',200]);
             
