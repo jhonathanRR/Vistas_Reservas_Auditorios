@@ -11,8 +11,7 @@
           <br>
           <br>
           <br>
-            <!--// Creamos un titulo y cuando demos click en el boton nos aparecera un nuevo sitio -->  
-                <h3>HOME</h3>                
+            <!--// Creamos un titulo y cuando demos click en el boton nos aparecera un nuevo sitio -->                              
             <div class="panel-body" >
                 @if (session('status'))
                     <div class="alert alert-success">
@@ -22,10 +21,11 @@
             </div>
             <ul class="list-group list-unstyled">
             <!--//con esto le pasamos a el controlador index que nos muestre la vista del home de usuarios -->
-            <li><a class="list-group-item active list-group-item-dark list-group-item-action" href="{{action('UserController@index')}}">Administrar Usuarios</a></li>
-            <li><a class="list-group-item list-group-item-darklist-group-item-action" href="{{action('AuditorioController@index')}}">Administrar Auditoríos</a></li>
-            <li><a class="list-group-item list-group-item-darklist-group-item-action" href="{{action('EventoController@index')}}">Administrar eventos</a></li>
-            <li><a class="list-group-item list-group-item-darklist-group-item-action" href="{{action('AcercaDeController@index')}}">Acerca de </a></li>
+            <li><a class="list-group-item active list-group-item list-group-item-action" href="{{action('UserController@index')}}">Administrar Usuarios</a></li>
+            <li><a class="list-group-item list-group-item list-group-item-action" href="{{action('AuditorioController@index')}}">Administrar Auditorios</a></li>
+            <li><a class="list-group-item list-group-item list-group-item-action" href="{{action('EventoController@index')}}">Administrar eventos</a></li>
+            <li><a class="list-group-item list-group-item list-group-item-action" href="{{action('ReservaController@index')}}">Administrar reservas</a></li>
+            <li><a class="list-group-item list-group-item list-group-item-action" href="{{action('AcercaDeController@index')}}">Acerca de </a></li>
             </ul>                    
                 </div>          
           <div class="col">

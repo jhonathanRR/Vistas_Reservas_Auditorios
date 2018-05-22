@@ -7,7 +7,7 @@
           <div class="col">
             
           </div>
-          <div class="col">
+          <div class="col-8">
           <h1>Editar usuario</h1>
             <p class="lead">Ingrese los datos para modificar el usuario.
             <a href="{{ route('crudUser.index') }}">Regresar y ver todos los usuarios</a></p>

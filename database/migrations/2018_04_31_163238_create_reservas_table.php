@@ -12,10 +12,18 @@ class CreateReservasTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {        
         Schema::create('reservas', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->timestamps();    
+            $table->string('name', 66);        
+            $table->date('dateInit');
+            $table->date('dateEnd');
+            $table->text('observation');    
+            $table->integer('event_id')->unsigned()->nullable();
+            $table->foreign('event_id')->references('id')->on('events')            
+            ->onUpdate('SET NULL')
+            ->onDelete('SET NULL');
         });
     }
 

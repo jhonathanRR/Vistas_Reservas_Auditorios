@@ -21,10 +21,9 @@
           <br>
           <br>
           <!--// Creamos un titulo y cuando demos click en el boton nos aparecera un nuevo sitio -->  
-            <h3>Listado de Los usuarios<a href="crear">
+            <h3>Listado de Los usuarios<a href="crear"></h3>
                 <br/><button class="btn btn-outline-dark">Nuevo</button></a>
-                <a href="home"><button class="btn btn-outline-dark">Atrás</button></a>
-                </h3>
+                <a href="home"><button class="btn btn-outline-dark">Atrás</button></a>                
 
                     <table class="table">
                         <thead class="thead-dark">

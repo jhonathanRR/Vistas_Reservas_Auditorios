@@ -8,7 +8,7 @@
           <div class="col">
             
           </div>
-          <div class="col">
+          <div class="col-8">
           <h1>Editar evento</h1>
             <p class="lead">Ingrese los datos para modificar el evento.
             <a href="{{ route('crudEvento.index') }}">Regresar y ver todos los eventos</a></p>

@@ -17,17 +17,17 @@
 </head>
 <body >
     <div id="app">
-    <nav class="navbar navbar-dark" style="background-color: #272326;">
+    <nav class="navbar navbar-dark" style="background-color: #1F618D;">
             <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="navbar-brand">
 
-                    
+                     <img alt="Logo uam" width="70" height="50" src="https://www.autonoma.edu.co/sites/default/files/styles/large/public/acreditacion-peq_0.png?itok=OFmWwl59">
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Reservas Auditorios
                     </a>
                     </div>        
                 </div>
@@ -79,6 +79,16 @@
 
         @yield('content')
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="http://www.autonoma.edu.co"> Universidad Autonóma de Manizales</a>
+  </div>
+  <!-- Copyright -->
 
     <!-- Scripts -->
     <!--<script src="{{ asset('js/app.js') }}"></script>    -->

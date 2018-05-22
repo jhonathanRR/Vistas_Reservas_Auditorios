@@ -3,95 +3,42 @@
 @section('content')
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Crear Reserva</div>
-
-                <div class="panel-body" >
-                    
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Latitud</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Longitud</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">descripcion</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Empieza</label>
-    
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
-                            </div>
-
-
-                        <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Finaliza</label>
-    
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
-                            </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<div class="row">
+          <div class="col">
+            
+          </div>
+          <div class="col-13">
+          <h1>Agregar una nueva reserva</h1>
+            <p class="lead">Ingrese la siguiente información para crear una nueva reserva.</p>
+            <a href="{{ route('crudReserva.index') }}">Regresar y ver todas las reservas</a></p>
+            <hr>
+            {!! Form::open(['route' => 'crudReserva.store']) !!}
+            <div class="form-group">
+            {!! Form::label('name', 'Nombre', ['class' => 'control-label']) !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
+            <div class="form-group">
+            {!! Form::label('dateInit', 'Fecha inicio', ['class' => 'control-label']) !!}
+            {!! Form::date('dateInit', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('dateEnd', 'Fecha fin', ['class' => 'control-label']) !!}
+            {!! Form::date('dateEnd', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('event_id', 'Evento', ['class' => 'control-label']) !!}
+            {!! Form::select('event_id', array_pluck($list, 'name', 'id'), null, array('class' => 'form-control')) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('observation', 'Observación', ['class' => 'control-label']) !!}
+            {!! Form::textArea('observation', null, ['class' => 'form-control']) !!}
+            </div>
+            {!! Form::submit('Crear reserva', ['class' => 'btn btn-primary']) !!}
+            {!! Form::close() !!}
+          </div>          
+          <div class="col">
+            
+          </div>
         </div>
-    </div>
 </div>
 @endsection

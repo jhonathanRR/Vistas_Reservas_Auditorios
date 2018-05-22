@@ -42,8 +42,8 @@
               <tr>
                 <th scope="row">{{ $event->name }}</th>
                 <td>{{ $event->organizator }}</td>
-                <td>{{Carbon\Carbon::parse($event->dateInit)->diffForHumans()}}</td>
-               <td>{{Carbon\Carbon::parse($event->dateEnd)->diffForHumans()}}</td> 
+                <td>{{$event->dateInit}}</td>
+               <td>{{$event->dateEnd}}</td> 
                 <td>{{ $event->description }}</td>
                 <td><a href="{{ route('crudEvento.edit', $event->id) }}" class="btn btn-primary">Editar</a></td>      
                 <td><a href="{{ route('crudEvento.show', $event->id) }}" class="btn btn-outline-primary">Ver</a></td>                      

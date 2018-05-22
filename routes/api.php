@@ -23,3 +23,5 @@ Route::resource('events', 'Api\EventoApiController')->only([
 ]);
 
 Route::get('events','Api\EventoApiController@index');
+
+Route::get('reservas','Api\ReservaApiController@index');

@@ -8,12 +8,14 @@ class Reserva extends Model
 {
     //
     // atributos
-    protected $fillable =[
-        'name',
-        'organizador',
-        'fechaCreacion',
-        'description',
+    protected $fillable =[        
+        'name','dateInit', 'dateEnd','observation', 'event_id',
     ];
+
+    public function evento()
+    {
+        return $this->belongsTo('App\Event');
+    }
     
     public $timestamps=true;
 }

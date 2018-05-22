@@ -2,96 +2,51 @@
 
 @section('content')
 
+<!-- Equal width cols, same on all screen sizes -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><b>Editar Reserva</b></div>
-
-                <div class="panel-body" >
-                    
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Latitud</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Longitud</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">descripcion</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">inicia</label>
-    
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
-                            </div>
-
-
-                        <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">finaliza</label>
-    
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
-                            </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <div class="row">
+          <div class="col">
+            
+          </div>
+          <div class="col-8">
+          <h1>Editar reserva</h1>
+            <p class="lead">Ingrese los datos para modificar la reserva.
+            <a href="{{ route('crudReserva.index') }}">Regresar y ver todas las reservas</a></p>
+            <hr>
+            @if($errors->any())
+            <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
             </div>
+            @endif
+            {!! Form::model($data, [
+            'method' => 'PUT',
+            'route' => ['crudReserva.update', $data->id]
+            ]) !!}            
+            <div class="form-group">
+            {!! Form::label('name', 'Nombre', ['class' => 'control-label']) !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('dateInit', 'Fecha inicio', ['class' => 'control-label']) !!}
+            {!! Form::date('dateInit', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('dateEnd', 'Fecha fin', ['class' => 'control-label']) !!}
+            {!! Form::date('dateEnd', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+            {!! Form::label('observation', 'Observación', ['class' => 'control-label']) !!}
+            {!! Form::textArea('observation', null, ['class' => 'form-control']) !!}
+            </div>
+            {!! Form::submit('Actualizar reserva', ['class' => 'btn btn-primary']) !!}
+            {!! Form::close() !!}
+                
+            </div>                    
+          <div class="col">
+            
+          </div>
         </div>
-    </div>
-</div>
+      </div>
 @endsection

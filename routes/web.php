@@ -65,6 +65,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Ruta para editar el auditorio Verb=Post
     Route::get('/editarReserva', 'ReservaController@edit');
 
+    // Ruta para ver la reserva Verb=Post
+    Route::get('/verReserva', 'ReservaController@show');
+
 
     //RUTAS PARA EL CONTROLADOR USERCONTROLLER
 
