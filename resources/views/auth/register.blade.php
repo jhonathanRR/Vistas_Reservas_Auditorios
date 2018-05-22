@@ -90,6 +90,7 @@
                             <div>
                                 <select name="rol">
                                     <option value="turn">Turn</option>
+                                    <option value="admin">Admin</option>
                                 </select>
                             </div>
                         </div>
